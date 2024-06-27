@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.nav-link {
+  @apply cursor-pointer text-black;
+}
+
+.nav-link:hover {
+  @apply text-red-500;
+}
+
+.nav-link.active {
+  @apply text-red-500 border-b-2 border-red-500;
+}
