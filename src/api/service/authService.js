@@ -3,15 +3,30 @@ import { notify } from "../../utils/notification";
 
 export const AUTH_LOGIN = async (formLogin) => {
     try {
-        console.log(formLogin);
         const response = await jsonAxios.post("/api.myservice.com/v1/auth/sign-in", formLogin)
+        console.log(response);
         notify("success", response.data.message)
+        localStorage.setItem('userData', JSON.stringify(response.data.data));
         return response;
     } catch (error) {
-        console.log(error)
-        notify("error", error.response.data.FieldsError.message)
+        console.log(error.response)
+        notify("error", error.response.data.message)
     }
 }
+
+export const COMPANY_LOGIN = async (formLogin) => {
+    try {
+        const response = await jsonAxios.post("/api.myservice.com/v1/auth/company/sign-in", formLogin)
+        console.log(response);
+        notify("success", response.data.message)
+        localStorage.setItem('userData', JSON.stringify(response.data.data));
+        return response;
+    } catch (error) {
+        console.log(error.response)
+        notify("error", error.response.data.message)
+    }
+}
+
 export const AUTH_REGISTER = async (formRegister) => {
     try {
         console.log(formRegister);

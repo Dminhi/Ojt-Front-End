@@ -3,6 +3,7 @@ import "antd/dist/reset.css";
 import {
   AUTH_LOGIN,
   AUTH_REGISTER,
+  COMPANY_LOGIN,
   COMPANY_REGISTER,
   REQUEST_FORGOTPASSWORD,
 } from "../../api/service/authService";
@@ -128,11 +129,11 @@ const LoginCompanyForm = () => {
       password: values.password,
     };
     try {
-      const response = await AUTH_LOGIN(formLogin);
+      const response = await COMPANY_LOGIN(formLogin);
+      console.log(response);
     } catch (error) {
       const errors = {
         ...formValues.errors,
-        email: "Login failed. Please try again.",
       };
       setFormValues({ ...formValues, errors });
     }
